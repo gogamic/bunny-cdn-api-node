@@ -1,34 +1,39 @@
-let request =  require('request')
-function randomNoGenerator(api, name, original_url, type) {
-  const options = {
-  url: 'https://api.github.com/repos/request/request',
-  headers: {
-    'User-Agent': 'request'
-  }
-};
+let request = require("request");
+const express = require("express");
+const app = express();
+const port = 3000;
 
-function callback(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    const info = JSON.parse(body);
-    console.log(info.stargazers_count + " Stars");
-    console.log(info.forks_count + " Forks");
-  }
-}
-  
-request(options, callback);
-  
-  
-  
-  
-  request.post(
-    'http://www.yoursite.com/formpage',
-    { json: { key: 'value' } },
-    function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            console.log(body);
-        }
-    }
+app.get("/", (req, res) => res.send("Hello World!"));
+
+app.listen(port, () =>
+  console.log(`Example app listening at http://localhost:${port}`)
 );
-  
-  
+
+function create_pull_zone(api, name, original_url, type) {
+  const options = {
+    url: "https://bunnycdn.com/api/pullzone",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      AccessKey: api
+    },
+    body: {
+      Name: name,
+      Type: type,
+      OriginUrl: original_url
+    }
+  };
+
+  function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      const info = JSON.parse(body);
+      console.log(info);
+    } else {
+      console.log(response);
+    }
+  }
+
+  request(options, callback);
 }
+let api = process.env.API;
+create_pull_zone(api, "test", "http://goga.com", 0);
