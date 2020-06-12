@@ -94,6 +94,11 @@ axios.post(URL, data, config).then(function(response){
 
 }
 
+module.exports = create_pull_zone;
+module.exports = delete_pull_zone;
+module.exports = purge_cache;
+module.exports = add_host_name;
+
 
 
 
