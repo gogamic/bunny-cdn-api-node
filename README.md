@@ -1,25 +1,46 @@
-# hello-sqlite
+# bunny-cdn-python
 
-A starter that has a database
+Bunny CDN is the fastest and Cheapest CDN
 
-- This app uses sqlite but you can power your apps with [a number of other storage options](https://glitch.com/storage)
-- `sqlite.db` is created and put into the `.data` folder, a hidden directory whose contents aren’t copied when a project is remixed. You can see the contents of `.data` in the console under "Logs"
-- To save to the database, remix this app!
+This is a bunny cdn node.js module for buny cdn API
 
-On the front-end,
+# How to Use IT
 
-- Edit `views/index.html`,  `public/style.css`, and `public/client.js`
-- Drag in `assets`, like images or music, to add them to your project
+As of now there are 4 commands whch are listed below with their patrameters
+<br>
+1.create_pull_zone(api, name, original_url, type)
+<br>
+2.delete_pull_zone(api, id)
+<br>
+3.purge_cache(api, id)
+<br>
+4.add_host_name(api, id, Hostname)
 
-On the back-end,
+<!--
+<br>
+5.force_ssl(api, id, Hostname, ssl)
+<br>
+6.get_free_ssl(api, Hostname)
+<br>
+7.billing_info(api, Hostname)
+<br>
+8.add_newblocked_ip(api, pullzoneid, ip)
+<br>
+9.remove_blocked_ip(api, pullzoneid, ip)
+-->
 
-- Your app starts at `server.js`
-- Add frameworks and packages in `package.json`
-- Safely store app secrets in `.env` (nobody can see this but you and people you invite)
+# Example
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy.
+```
+import { purge_cache } from 'bunnycdn';
 
+purge_cache(api, id)
 
-## Made by [Glitch](https://glitch.com/)
+```
 
-\ ゜ o ゜)ノ
+# INFO
+
+1. This is not a official bunny cdn module
+2. ssl must be an Boolean value
+3. api and ID must be an Integer
+4. ip must be an string

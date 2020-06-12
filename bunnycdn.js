@@ -1,6 +1,8 @@
 let axios = require("axios");
 var request = require('request');
 
+
+
 // create_pull_zone
 function create_pull_zone(api, name, original_url, type) {
 let URL =  'https://bunnycdn.com/api/pullzone';  
@@ -18,7 +20,9 @@ let data = {
   'OriginUrl': original_url
 }
 axios.post(URL, data, config).then(function(response){
-  console.log(response.data)
+  if (response.status == 200) {
+    console.log("host added")
+  }
 }).catch(function(error){
   console.log(error.response.data)
 })
@@ -65,8 +69,9 @@ axios.post(URL, config).then(function(response){
 
 }
 
+// new_host
 function add_host_name(api, id, Hostname) {
-let URL =  'https://bunnycdn.com/api/pullzone';  
+let URL =  'https://bunnycdn.com/api/pullzone/addHostname';  
 let config = {
   headers: {
     "Content-Type": "application/json",
@@ -76,12 +81,13 @@ let config = {
 }
 
 let data = {
-  'Name': name,
-  'Type': type,
-  'OriginUrl': original_url
+  "PullZoneId": id,
+  "Hostname": Hostname,
 }
 axios.post(URL, data, config).then(function(response){
-  console.log(response.data)
+  if (response.status == 204) {
+    console.log("host added")
+  }
 }).catch(function(error){
   console.log(error.response.data)
 })
@@ -99,8 +105,5 @@ axios.post(URL, data, config).then(function(response){
 
 
 
-//testing
-let api = process.env.API;
 
-purge_cache(api, 140483);
 
