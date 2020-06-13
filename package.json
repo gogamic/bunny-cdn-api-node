@@ -1,11 +1,8 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "bunnycdb",
-  "version": "0.0.1",
+  "name": "bunnycdn",
+  "version": "0.0.4",
   "description": "A simple Node libary that intergrates wiht bunnycdn api.",
-  "main": "server.js",
+  "main": "bunnycdn.js",
   "scripts": {
     "start": "node bunnycdn.js"
   },
